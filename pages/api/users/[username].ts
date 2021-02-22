@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
-import { checkToken } from "../../../middlewares/authMiddleware";
 import useDatabase from "../../../middlewares/useDatabase";
 import User from "../../../models/User";
 import responseMessage from "../../../modules/responseMessage";
@@ -9,10 +8,11 @@ import util from "../../../modules/util";
 
 const handler = nc()
   .use(useDatabase())
-  .get(async (req: NextApiRequest, res: NextApiResponse) => {
+  .get(async (req: any, res: NextApiResponse) => {
     const { username } = req.query;
+    console.log(req.user);
     try {
-      const user = await User.findOne({ where: { username } });
+      const user = await User.findOne({ username });
       res
         .status(statusCode.OK)
         .send(
