@@ -18,7 +18,8 @@ class JwtModule {
     const payload: TokenPayload = {
       id: user.id,
       snsId: user.snsId,
-      snsType: user.snsType,
+      socialType: user.socialType,
+      username: user.username,
     };
     const result = {
       expiresIn: Number(this.options.expiresIn.slice(0, -1)) * 86400,

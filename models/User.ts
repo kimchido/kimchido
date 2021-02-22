@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface IUser extends Document {
   username: string;
-  snsType: string;
+  socialType: string;
   snsId: string;
   avatarUrl: string;
   rank: string;
@@ -13,7 +13,7 @@ const UserSchema: Schema = new mongoose.Schema({
     type: String,
     maxlength: 20,
   },
-  snsType: {
+  socialType: {
     type: String,
     maxlength: 20,
   },
